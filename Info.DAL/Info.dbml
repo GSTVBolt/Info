@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="db_info" Class="InfoDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=DESKTOP-A1PIAMK;Initial Catalog=db_info;Persist Security Info=True;User ID=sa" SettingsObjectName="Info.DAL.Properties.Settings" SettingsPropertyName="db_infoConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.tbl_Categorias" Member="Categorias">
+    <Type Name="Categoria">
+      <Column Name="id_Categoria" Member="Codigo" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="ds_Categoria" Member="Descricao" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Association Name="tbl_Categoria_tbl_Produto" Member="Produtos" ThisKey="Codigo" OtherKey="CodigoCategoria" Type="Produto" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tbl_Produtos" Member="Produtos">
+    <Type Name="Produto">
+      <Column Name="id_Produto" Member="Codigo" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="ds_Produto" Member="Descricao" Type="System.String" DbType="VarChar(80)" CanBeNull="true" />
+      <Column Name="vl_Valor" Member="Valor" Type="System.Decimal" DbType="Decimal(15,2)" CanBeNull="true" />
+      <Column Name="id_Categoria" Member="CodigoCategoria" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="tbl_Categoria_tbl_Produto" Member="Categoria" ThisKey="CodigoCategoria" OtherKey="Codigo" Type="Categoria" IsForeignKey="true" />
+    </Type>
+  </Table>
+</Database>

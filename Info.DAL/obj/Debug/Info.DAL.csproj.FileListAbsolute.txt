@@ -1,0 +1,7 @@
+D:\Gustavo\Projetos\Info\Info.DAL\bin\Debug\Info.DAL.dll
+D:\Gustavo\Projetos\Info\Info.DAL\bin\Debug\Info.DAL.pdb
+D:\Gustavo\Projetos\Info\Info.DAL\obj\Debug\Info.DAL.csproj.AssemblyReference.cache
+D:\Gustavo\Projetos\Info\Info.DAL\obj\Debug\Info.DAL.csproj.CoreCompileInputs.cache
+D:\Gustavo\Projetos\Info\Info.DAL\obj\Debug\Info.DAL.dll
+D:\Gustavo\Projetos\Info\Info.DAL\obj\Debug\Info.DAL.pdb
+D:\Gustavo\Projetos\Info\Info.DAL\bin\Debug\Info.DAL.dll.config
