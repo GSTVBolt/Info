@@ -10,5 +10,6 @@ namespace Info
     {
         public static frmCategoria FormCategoria { get; set; }
         public static frmProduto FormProduto { get; set; }
+        public static frmProdutosPorCategoria FormProdutosPorCategoria { get; set; }
     }
 }

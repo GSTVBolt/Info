@@ -36,5 +36,15 @@ namespace Info
             MeusFormularios.FormProduto.Show();
             MeusFormularios.FormProduto.Focus();
         }
+
+        private void produtoPorCategoriaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (MeusFormularios.FormProdutosPorCategoria == null)
+            {
+                MeusFormularios.FormProdutosPorCategoria = new frmProdutosPorCategoria();
+            }
+            MeusFormularios.FormProdutosPorCategoria.Show();
+            MeusFormularios.FormProdutosPorCategoria.Focus();
+        }
     }
 }

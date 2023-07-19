@@ -65,6 +65,12 @@
     <Compile Include="frmProduto.Designer.cs">
       <DependentUpon>frmProduto.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmProdutosPorCategoria.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmProdutosPorCategoria.Designer.cs">
+      <DependentUpon>frmProdutosPorCategoria.cs</DependentUpon>
+    </Compile>
     <Compile Include="MeusFormularios.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -77,6 +83,9 @@
     <EmbeddedResource Include="frmProduto.resx">
       <DependentUpon>frmProduto.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmProdutosPorCategoria.resx">
+      <DependentUpon>frmProdutosPorCategoria.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -87,6 +96,7 @@
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
     <None Include="Properties\DataSources\Info.DAL.Categoria.datasource" />
+    <None Include="Properties\DataSources\Info.DAL.Produto.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
