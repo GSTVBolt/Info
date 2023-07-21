@@ -46,5 +46,15 @@ namespace Info
             MeusFormularios.FormProdutosPorCategoria.Show();
             MeusFormularios.FormProdutosPorCategoria.Focus();
         }
+
+        private void pessoasFísicasToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (MeusFormularios.FormPessoaFisica == null)
+            {
+                MeusFormularios.FormPessoaFisica = new frmPessoaFisica();
+            }
+            MeusFormularios.FormPessoaFisica.Show();
+            MeusFormularios.FormPessoaFisica.Focus();
+        }
     }
 }

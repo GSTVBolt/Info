@@ -4,7 +4,7 @@
     <Type Name="Categoria">
       <Column Name="id_Categoria" Member="Codigo" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
       <Column Name="ds_Categoria" Member="Descricao" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
-      <Association Name="tbl_Categoria_tbl_Produto" Member="Produtos" ThisKey="Codigo" OtherKey="CodigoCategoria" Type="Produto" />
+      <Association Name="Categoria_Produto" Member="Produtos" ThisKey="Codigo" OtherKey="CodigoCategoria" Type="Produto" />
     </Type>
   </Table>
   <Table Name="dbo.tbl_Produtos" Member="Produtos">
@@ -13,7 +13,46 @@
       <Column Name="ds_Produto" Member="Descricao" Type="System.String" DbType="VarChar(80)" CanBeNull="true" />
       <Column Name="vl_Valor" Member="Valor" Type="System.Decimal" DbType="Decimal(15,2)" CanBeNull="true" />
       <Column Name="id_Categoria" Member="CodigoCategoria" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Association Name="tbl_Categoria_tbl_Produto" Member="Categoria" ThisKey="CodigoCategoria" OtherKey="Codigo" Type="Categoria" IsForeignKey="true" />
+      <Association Name="Categoria_Produto" Member="Categoria" ThisKey="CodigoCategoria" OtherKey="Codigo" Type="Categoria" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tbl_Pessoa" Member="Pessoas">
+    <Type Name="Pessoa">
+      <Column Name="id_Pessoa" Member="CodigoPessoa" Storage="_id_Pessoa" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="ds_Email" Member="Email" Storage="_ds_Email" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
+      <Column Name="nm_Nome" Member="Nome" Storage="_nm_Nome" Type="System.String" DbType="VarChar(200) NOT NULL" CanBeNull="false" />
+      <Column Name="no_Telefone" Member="Telefone" Storage="_no_Telefone" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
+      <Association Name="tbl_Pessoa_tbl_Pessoa_Fisica" Member="tbl_Pessoa_Fisica" ThisKey="CodigoPessoa" OtherKey="CodigoPessoa" Type="PessoaFisica" Cardinality="One" />
+      <Association Name="tbl_Pessoa_tbl_Pessoa_Juridica" Member="tbl_Pessoa_Juridica" ThisKey="CodigoPessoa" OtherKey="CodigoPessoa" Type="PessoaJuridica" Cardinality="One" />
+      <Association Name="tbl_Pessoa_tbl_Usuario" Member="tbl_Usuario" ThisKey="CodigoPessoa" OtherKey="CodigoPessoa" Type="Usuario" Cardinality="One" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tbl_Pessoa_Fisica" Member="PessoaFisicas">
+    <Type Name="PessoaFisica">
+      <Column Name="id_Pessoa" Member="CodigoPessoa" Storage="_id_Pessoa" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="CPF" Type="System.String" DbType="VarChar(20) NOT NULL" CanBeNull="false" />
+      <Column Name="RG" Type="System.String" DbType="VarChar(20) NOT NULL" CanBeNull="false" />
+      <Column Name="dt_Nascimento" Member="DataNascimento" Storage="_dt_Nascimento" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="nm_Pai" Member="NomePai" Storage="_nm_Pai" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
+      <Column Name="nm_Mae" Member="NomeMae" Storage="_nm_Mae" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
+      <Association Name="tbl_Pessoa_tbl_Pessoa_Fisica" Member="Pessoa" Storage="_tbl_Pessoa" ThisKey="CodigoPessoa" OtherKey="CodigoPessoa" Type="Pessoa" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tbl_Pessoa_Juridica" Member="PessoaJuridicas">
+    <Type Name="PessoaJuridica">
+      <Column Name="id_pessoa" Member="CodigoPessoa" Storage="_id_pessoa" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="CNPJ" Type="System.String" DbType="VarChar(30) NOT NULL" CanBeNull="false" />
+      <Column Name="Inscricao" Member="InscricaoEstadual" Storage="_Inscricao" Type="System.String" DbType="VarChar(30) NOT NULL" CanBeNull="false" />
+      <Column Name="razao_Social" Member="RazaoSocial" Storage="_razao_Social" Type="System.String" DbType="VarChar(200) NOT NULL" CanBeNull="false" />
+      <Association Name="tbl_Pessoa_tbl_Pessoa_Juridica" Member="Pessoa" Storage="_tbl_Pessoa" ThisKey="CodigoPessoa" OtherKey="CodigoPessoa" Type="Pessoa" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tbl_Usuario" Member="Usuarios">
+    <Type Name="Usuario">
+      <Column Name="id_Pessoa" Member="CodigoPessoa" Storage="_id_Pessoa" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Usuario" Member="NomeUsuario" Storage="_Usuario" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Senha" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Association Name="tbl_Pessoa_tbl_Usuario" Member="Pessoa" Storage="_tbl_Pessoa" ThisKey="CodigoPessoa" OtherKey="CodigoPessoa" Type="Pessoa" IsForeignKey="true" />
     </Type>
   </Table>
 </Database>

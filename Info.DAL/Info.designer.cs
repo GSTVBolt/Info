@@ -36,6 +36,18 @@ namespace Info.DAL
     partial void InsertProduto(Produto instance);
     partial void UpdateProduto(Produto instance);
     partial void DeleteProduto(Produto instance);
+    partial void InsertPessoa(Pessoa instance);
+    partial void UpdatePessoa(Pessoa instance);
+    partial void DeletePessoa(Pessoa instance);
+    partial void InsertPessoaFisica(PessoaFisica instance);
+    partial void UpdatePessoaFisica(PessoaFisica instance);
+    partial void DeletePessoaFisica(PessoaFisica instance);
+    partial void InsertPessoaJuridica(PessoaJuridica instance);
+    partial void UpdatePessoaJuridica(PessoaJuridica instance);
+    partial void DeletePessoaJuridica(PessoaJuridica instance);
+    partial void InsertUsuario(Usuario instance);
+    partial void UpdateUsuario(Usuario instance);
+    partial void DeleteUsuario(Usuario instance);
     #endregion
 		
 		public InfoDataContext() : 
@@ -81,6 +93,38 @@ namespace Info.DAL
 			get
 			{
 				return this.GetTable<Produto>();
+			}
+		}
+		
+		public System.Data.Linq.Table<Pessoa> Pessoas
+		{
+			get
+			{
+				return this.GetTable<Pessoa>();
+			}
+		}
+		
+		public System.Data.Linq.Table<PessoaFisica> PessoaFisicas
+		{
+			get
+			{
+				return this.GetTable<PessoaFisica>();
+			}
+		}
+		
+		public System.Data.Linq.Table<PessoaJuridica> PessoaJuridicas
+		{
+			get
+			{
+				return this.GetTable<PessoaJuridica>();
+			}
+		}
+		
+		public System.Data.Linq.Table<Usuario> Usuarios
+		{
+			get
+			{
+				return this.GetTable<Usuario>();
 			}
 		}
 	}
@@ -153,7 +197,7 @@ namespace Info.DAL
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="tbl_Categoria_tbl_Produto", Storage="_Produtos", ThisKey="Codigo", OtherKey="CodigoCategoria")]
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Categoria_Produto", Storage="_Produtos", ThisKey="Codigo", OtherKey="CodigoCategoria")]
 		public EntitySet<Produto> Produtos
 		{
 			get
@@ -315,7 +359,7 @@ namespace Info.DAL
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="tbl_Categoria_tbl_Produto", Storage="_Categoria", ThisKey="CodigoCategoria", OtherKey="Codigo", IsForeignKey=true)]
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Categoria_Produto", Storage="_Categoria", ThisKey="CodigoCategoria", OtherKey="Codigo", IsForeignKey=true)]
 		public Categoria Categoria
 		{
 			get
@@ -345,6 +389,773 @@ namespace Info.DAL
 						this._CodigoCategoria = default(Nullable<int>);
 					}
 					this.SendPropertyChanged("Categoria");
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.tbl_Pessoa")]
+	public partial class Pessoa : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _id_Pessoa;
+		
+		private string _ds_Email;
+		
+		private string _nm_Nome;
+		
+		private string _no_Telefone;
+		
+		private EntityRef<PessoaFisica> _tbl_Pessoa_Fisica;
+		
+		private EntityRef<PessoaJuridica> _tbl_Pessoa_Juridica;
+		
+		private EntityRef<Usuario> _tbl_Usuario;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnCodigoPessoaChanging(int value);
+    partial void OnCodigoPessoaChanged();
+    partial void OnEmailChanging(string value);
+    partial void OnEmailChanged();
+    partial void OnNomeChanging(string value);
+    partial void OnNomeChanged();
+    partial void OnTelefoneChanging(string value);
+    partial void OnTelefoneChanged();
+    #endregion
+		
+		public Pessoa()
+		{
+			this._tbl_Pessoa_Fisica = default(EntityRef<PessoaFisica>);
+			this._tbl_Pessoa_Juridica = default(EntityRef<PessoaJuridica>);
+			this._tbl_Usuario = default(EntityRef<Usuario>);
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Name="id_Pessoa", Storage="_id_Pessoa", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int CodigoPessoa
+		{
+			get
+			{
+				return this._id_Pessoa;
+			}
+			set
+			{
+				if ((this._id_Pessoa != value))
+				{
+					this.OnCodigoPessoaChanging(value);
+					this.SendPropertyChanging();
+					this._id_Pessoa = value;
+					this.SendPropertyChanged("CodigoPessoa");
+					this.OnCodigoPessoaChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Name="ds_Email", Storage="_ds_Email", DbType="VarChar(200)")]
+		public string Email
+		{
+			get
+			{
+				return this._ds_Email;
+			}
+			set
+			{
+				if ((this._ds_Email != value))
+				{
+					this.OnEmailChanging(value);
+					this.SendPropertyChanging();
+					this._ds_Email = value;
+					this.SendPropertyChanged("Email");
+					this.OnEmailChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Name="nm_Nome", Storage="_nm_Nome", DbType="VarChar(200) NOT NULL", CanBeNull=false)]
+		public string Nome
+		{
+			get
+			{
+				return this._nm_Nome;
+			}
+			set
+			{
+				if ((this._nm_Nome != value))
+				{
+					this.OnNomeChanging(value);
+					this.SendPropertyChanging();
+					this._nm_Nome = value;
+					this.SendPropertyChanged("Nome");
+					this.OnNomeChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Name="no_Telefone", Storage="_no_Telefone", DbType="VarChar(30)")]
+		public string Telefone
+		{
+			get
+			{
+				return this._no_Telefone;
+			}
+			set
+			{
+				if ((this._no_Telefone != value))
+				{
+					this.OnTelefoneChanging(value);
+					this.SendPropertyChanging();
+					this._no_Telefone = value;
+					this.SendPropertyChanged("Telefone");
+					this.OnTelefoneChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="tbl_Pessoa_tbl_Pessoa_Fisica", Storage="_tbl_Pessoa_Fisica", ThisKey="CodigoPessoa", OtherKey="CodigoPessoa", IsUnique=true, IsForeignKey=false)]
+		public PessoaFisica tbl_Pessoa_Fisica
+		{
+			get
+			{
+				return this._tbl_Pessoa_Fisica.Entity;
+			}
+			set
+			{
+				PessoaFisica previousValue = this._tbl_Pessoa_Fisica.Entity;
+				if (((previousValue != value) 
+							|| (this._tbl_Pessoa_Fisica.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._tbl_Pessoa_Fisica.Entity = null;
+						previousValue.Pessoa = null;
+					}
+					this._tbl_Pessoa_Fisica.Entity = value;
+					if ((value != null))
+					{
+						value.Pessoa = this;
+					}
+					this.SendPropertyChanged("tbl_Pessoa_Fisica");
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="tbl_Pessoa_tbl_Pessoa_Juridica", Storage="_tbl_Pessoa_Juridica", ThisKey="CodigoPessoa", OtherKey="CodigoPessoa", IsUnique=true, IsForeignKey=false)]
+		public PessoaJuridica tbl_Pessoa_Juridica
+		{
+			get
+			{
+				return this._tbl_Pessoa_Juridica.Entity;
+			}
+			set
+			{
+				PessoaJuridica previousValue = this._tbl_Pessoa_Juridica.Entity;
+				if (((previousValue != value) 
+							|| (this._tbl_Pessoa_Juridica.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._tbl_Pessoa_Juridica.Entity = null;
+						previousValue.Pessoa = null;
+					}
+					this._tbl_Pessoa_Juridica.Entity = value;
+					if ((value != null))
+					{
+						value.Pessoa = this;
+					}
+					this.SendPropertyChanged("tbl_Pessoa_Juridica");
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="tbl_Pessoa_tbl_Usuario", Storage="_tbl_Usuario", ThisKey="CodigoPessoa", OtherKey="CodigoPessoa", IsUnique=true, IsForeignKey=false)]
+		public Usuario tbl_Usuario
+		{
+			get
+			{
+				return this._tbl_Usuario.Entity;
+			}
+			set
+			{
+				Usuario previousValue = this._tbl_Usuario.Entity;
+				if (((previousValue != value) 
+							|| (this._tbl_Usuario.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._tbl_Usuario.Entity = null;
+						previousValue.Pessoa = null;
+					}
+					this._tbl_Usuario.Entity = value;
+					if ((value != null))
+					{
+						value.Pessoa = this;
+					}
+					this.SendPropertyChanged("tbl_Usuario");
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.tbl_Pessoa_Fisica")]
+	public partial class PessoaFisica : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _id_Pessoa;
+		
+		private string _CPF;
+		
+		private string _RG;
+		
+		private System.Nullable<System.DateTime> _dt_Nascimento;
+		
+		private string _nm_Pai;
+		
+		private string _nm_Mae;
+		
+		private EntityRef<Pessoa> _tbl_Pessoa;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnCodigoPessoaChanging(int value);
+    partial void OnCodigoPessoaChanged();
+    partial void OnCPFChanging(string value);
+    partial void OnCPFChanged();
+    partial void OnRGChanging(string value);
+    partial void OnRGChanged();
+    partial void OnDataNascimentoChanging(System.Nullable<System.DateTime> value);
+    partial void OnDataNascimentoChanged();
+    partial void OnNomePaiChanging(string value);
+    partial void OnNomePaiChanged();
+    partial void OnNomeMaeChanging(string value);
+    partial void OnNomeMaeChanged();
+    #endregion
+		
+		public PessoaFisica()
+		{
+			this._tbl_Pessoa = default(EntityRef<Pessoa>);
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Name="id_Pessoa", Storage="_id_Pessoa", DbType="Int NOT NULL", IsPrimaryKey=true)]
+		public int CodigoPessoa
+		{
+			get
+			{
+				return this._id_Pessoa;
+			}
+			set
+			{
+				if ((this._id_Pessoa != value))
+				{
+					this.OnCodigoPessoaChanging(value);
+					this.SendPropertyChanging();
+					this._id_Pessoa = value;
+					this.SendPropertyChanged("CodigoPessoa");
+					this.OnCodigoPessoaChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CPF", DbType="VarChar(20) NOT NULL", CanBeNull=false)]
+		public string CPF
+		{
+			get
+			{
+				return this._CPF;
+			}
+			set
+			{
+				if ((this._CPF != value))
+				{
+					this.OnCPFChanging(value);
+					this.SendPropertyChanging();
+					this._CPF = value;
+					this.SendPropertyChanged("CPF");
+					this.OnCPFChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_RG", DbType="VarChar(20) NOT NULL", CanBeNull=false)]
+		public string RG
+		{
+			get
+			{
+				return this._RG;
+			}
+			set
+			{
+				if ((this._RG != value))
+				{
+					this.OnRGChanging(value);
+					this.SendPropertyChanging();
+					this._RG = value;
+					this.SendPropertyChanged("RG");
+					this.OnRGChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Name="dt_Nascimento", Storage="_dt_Nascimento", DbType="Date")]
+		public System.Nullable<System.DateTime> DataNascimento
+		{
+			get
+			{
+				return this._dt_Nascimento;
+			}
+			set
+			{
+				if ((this._dt_Nascimento != value))
+				{
+					this.OnDataNascimentoChanging(value);
+					this.SendPropertyChanging();
+					this._dt_Nascimento = value;
+					this.SendPropertyChanged("DataNascimento");
+					this.OnDataNascimentoChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Name="nm_Pai", Storage="_nm_Pai", DbType="VarChar(200)")]
+		public string NomePai
+		{
+			get
+			{
+				return this._nm_Pai;
+			}
+			set
+			{
+				if ((this._nm_Pai != value))
+				{
+					this.OnNomePaiChanging(value);
+					this.SendPropertyChanging();
+					this._nm_Pai = value;
+					this.SendPropertyChanged("NomePai");
+					this.OnNomePaiChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Name="nm_Mae", Storage="_nm_Mae", DbType="VarChar(200)")]
+		public string NomeMae
+		{
+			get
+			{
+				return this._nm_Mae;
+			}
+			set
+			{
+				if ((this._nm_Mae != value))
+				{
+					this.OnNomeMaeChanging(value);
+					this.SendPropertyChanging();
+					this._nm_Mae = value;
+					this.SendPropertyChanged("NomeMae");
+					this.OnNomeMaeChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="tbl_Pessoa_tbl_Pessoa_Fisica", Storage="_tbl_Pessoa", ThisKey="CodigoPessoa", OtherKey="CodigoPessoa", IsForeignKey=true)]
+		public Pessoa Pessoa
+		{
+			get
+			{
+				return this._tbl_Pessoa.Entity;
+			}
+			set
+			{
+				Pessoa previousValue = this._tbl_Pessoa.Entity;
+				if (((previousValue != value) 
+							|| (this._tbl_Pessoa.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._tbl_Pessoa.Entity = null;
+						previousValue.tbl_Pessoa_Fisica = null;
+					}
+					this._tbl_Pessoa.Entity = value;
+					if ((value != null))
+					{
+						value.tbl_Pessoa_Fisica = this;
+						this._id_Pessoa = value.CodigoPessoa;
+					}
+					else
+					{
+						this._id_Pessoa = default(int);
+					}
+					this.SendPropertyChanged("Pessoa");
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.tbl_Pessoa_Juridica")]
+	public partial class PessoaJuridica : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _id_pessoa;
+		
+		private string _CNPJ;
+		
+		private string _Inscricao;
+		
+		private string _razao_Social;
+		
+		private EntityRef<Pessoa> _tbl_Pessoa;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnCodigoPessoaChanging(int value);
+    partial void OnCodigoPessoaChanged();
+    partial void OnCNPJChanging(string value);
+    partial void OnCNPJChanged();
+    partial void OnInscricaoEstadualChanging(string value);
+    partial void OnInscricaoEstadualChanged();
+    partial void OnRazaoSocialChanging(string value);
+    partial void OnRazaoSocialChanged();
+    #endregion
+		
+		public PessoaJuridica()
+		{
+			this._tbl_Pessoa = default(EntityRef<Pessoa>);
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Name="id_pessoa", Storage="_id_pessoa", DbType="Int NOT NULL", IsPrimaryKey=true)]
+		public int CodigoPessoa
+		{
+			get
+			{
+				return this._id_pessoa;
+			}
+			set
+			{
+				if ((this._id_pessoa != value))
+				{
+					this.OnCodigoPessoaChanging(value);
+					this.SendPropertyChanging();
+					this._id_pessoa = value;
+					this.SendPropertyChanged("CodigoPessoa");
+					this.OnCodigoPessoaChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CNPJ", DbType="VarChar(30) NOT NULL", CanBeNull=false)]
+		public string CNPJ
+		{
+			get
+			{
+				return this._CNPJ;
+			}
+			set
+			{
+				if ((this._CNPJ != value))
+				{
+					this.OnCNPJChanging(value);
+					this.SendPropertyChanging();
+					this._CNPJ = value;
+					this.SendPropertyChanged("CNPJ");
+					this.OnCNPJChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Name="Inscricao", Storage="_Inscricao", DbType="VarChar(30) NOT NULL", CanBeNull=false)]
+		public string InscricaoEstadual
+		{
+			get
+			{
+				return this._Inscricao;
+			}
+			set
+			{
+				if ((this._Inscricao != value))
+				{
+					this.OnInscricaoEstadualChanging(value);
+					this.SendPropertyChanging();
+					this._Inscricao = value;
+					this.SendPropertyChanged("InscricaoEstadual");
+					this.OnInscricaoEstadualChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Name="razao_Social", Storage="_razao_Social", DbType="VarChar(200) NOT NULL", CanBeNull=false)]
+		public string RazaoSocial
+		{
+			get
+			{
+				return this._razao_Social;
+			}
+			set
+			{
+				if ((this._razao_Social != value))
+				{
+					this.OnRazaoSocialChanging(value);
+					this.SendPropertyChanging();
+					this._razao_Social = value;
+					this.SendPropertyChanged("RazaoSocial");
+					this.OnRazaoSocialChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="tbl_Pessoa_tbl_Pessoa_Juridica", Storage="_tbl_Pessoa", ThisKey="CodigoPessoa", OtherKey="CodigoPessoa", IsForeignKey=true)]
+		public Pessoa Pessoa
+		{
+			get
+			{
+				return this._tbl_Pessoa.Entity;
+			}
+			set
+			{
+				Pessoa previousValue = this._tbl_Pessoa.Entity;
+				if (((previousValue != value) 
+							|| (this._tbl_Pessoa.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._tbl_Pessoa.Entity = null;
+						previousValue.tbl_Pessoa_Juridica = null;
+					}
+					this._tbl_Pessoa.Entity = value;
+					if ((value != null))
+					{
+						value.tbl_Pessoa_Juridica = this;
+						this._id_pessoa = value.CodigoPessoa;
+					}
+					else
+					{
+						this._id_pessoa = default(int);
+					}
+					this.SendPropertyChanged("Pessoa");
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.tbl_Usuario")]
+	public partial class Usuario : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _id_Pessoa;
+		
+		private string _Usuario;
+		
+		private string _Senha;
+		
+		private EntityRef<Pessoa> _tbl_Pessoa;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnCodigoPessoaChanging(int value);
+    partial void OnCodigoPessoaChanged();
+    partial void OnNomeUsuarioChanging(string value);
+    partial void OnNomeUsuarioChanged();
+    partial void OnSenhaChanging(string value);
+    partial void OnSenhaChanged();
+    #endregion
+		
+		public Usuario()
+		{
+			this._tbl_Pessoa = default(EntityRef<Pessoa>);
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Name="id_Pessoa", Storage="_id_Pessoa", DbType="Int NOT NULL", IsPrimaryKey=true)]
+		public int CodigoPessoa
+		{
+			get
+			{
+				return this._id_Pessoa;
+			}
+			set
+			{
+				if ((this._id_Pessoa != value))
+				{
+					this.OnCodigoPessoaChanging(value);
+					this.SendPropertyChanging();
+					this._id_Pessoa = value;
+					this.SendPropertyChanged("CodigoPessoa");
+					this.OnCodigoPessoaChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Name="Usuario", Storage="_Usuario", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
+		public string NomeUsuario
+		{
+			get
+			{
+				return this._Usuario;
+			}
+			set
+			{
+				if ((this._Usuario != value))
+				{
+					this.OnNomeUsuarioChanging(value);
+					this.SendPropertyChanging();
+					this._Usuario = value;
+					this.SendPropertyChanged("NomeUsuario");
+					this.OnNomeUsuarioChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Senha", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
+		public string Senha
+		{
+			get
+			{
+				return this._Senha;
+			}
+			set
+			{
+				if ((this._Senha != value))
+				{
+					this.OnSenhaChanging(value);
+					this.SendPropertyChanging();
+					this._Senha = value;
+					this.SendPropertyChanged("Senha");
+					this.OnSenhaChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="tbl_Pessoa_tbl_Usuario", Storage="_tbl_Pessoa", ThisKey="CodigoPessoa", OtherKey="CodigoPessoa", IsForeignKey=true)]
+		public Pessoa Pessoa
+		{
+			get
+			{
+				return this._tbl_Pessoa.Entity;
+			}
+			set
+			{
+				Pessoa previousValue = this._tbl_Pessoa.Entity;
+				if (((previousValue != value) 
+							|| (this._tbl_Pessoa.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._tbl_Pessoa.Entity = null;
+						previousValue.tbl_Usuario = null;
+					}
+					this._tbl_Pessoa.Entity = value;
+					if ((value != null))
+					{
+						value.tbl_Usuario = this;
+						this._id_Pessoa = value.CodigoPessoa;
+					}
+					else
+					{
+						this._id_Pessoa = default(int);
+					}
+					this.SendPropertyChanged("Pessoa");
 				}
 			}
 		}
