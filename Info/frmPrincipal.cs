@@ -56,5 +56,15 @@ namespace Info
             MeusFormularios.FormPessoaFisica.Show();
             MeusFormularios.FormPessoaFisica.Focus();
         }
+
+        private void vendaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (MeusFormularios.FormVenda == null)
+            {
+                MeusFormularios.FormVenda = new frmVenda();
+            }
+            MeusFormularios.FormVenda.Show();
+            MeusFormularios.FormVenda.Focus();
+        }
     }
 }

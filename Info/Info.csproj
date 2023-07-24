@@ -77,6 +77,12 @@
     <Compile Include="frmProdutosPorCategoria.Designer.cs">
       <DependentUpon>frmProdutosPorCategoria.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmVenda.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmVenda.Designer.cs">
+      <DependentUpon>frmVenda.cs</DependentUpon>
+    </Compile>
     <Compile Include="MeusFormularios.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -95,6 +101,9 @@
     <EmbeddedResource Include="frmProdutosPorCategoria.resx">
       <DependentUpon>frmProdutosPorCategoria.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmVenda.resx">
+      <DependentUpon>frmVenda.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -105,9 +114,13 @@
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
     <None Include="Properties\DataSources\Info.DAL.Categoria.datasource" />
+    <None Include="Properties\DataSources\Info.DAL.ItemVenda.datasource" />
     <None Include="Properties\DataSources\Info.DAL.Pessoa.datasource" />
     <None Include="Properties\DataSources\Info.DAL.PessoaFisica.datasource" />
+    <None Include="Properties\DataSources\Info.DAL.PessoaJuridica.datasource" />
     <None Include="Properties\DataSources\Info.DAL.Produto.datasource" />
+    <None Include="Properties\DataSources\Info.DAL.Usuario.datasource" />
+    <None Include="Properties\DataSources\Info.DAL.Venda.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

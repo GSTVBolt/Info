@@ -43,4 +43,20 @@ go
 --	no_Telefone VARCHAR(30)
 --);
 
+--CREATE TABLE tbl_ItensVenda (
+--	qt_Quantidade INT NOT NULL,
+--	id_Produto INT NOT NULL,
+--	id_Venda INT NOT NULL,
+--	vl_Valor DECIMAL(15,2) NOT NULL,
+--	id_Item INT PRIMARY KEY IDENTITY(1, 1) NOT NULL
+--)
+
+--CREATE TABLE tbl_Venda (
+--	id_Venda INT PRIMARY KEY IDENTITY(1, 1) NOT NULL,
+--	vl_Valor DECIMAL(12, 2),
+--	dc_Desconto DECIMAL(15, 2),
+--	vl_ValorPago DECIMAL(15, 2),
+--	id_Pessoa INT
+--)
+
 

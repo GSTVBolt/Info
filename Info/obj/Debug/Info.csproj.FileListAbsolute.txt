@@ -34,3 +34,4 @@ D:\Gustavo\Projetos\Pessoais\Info\Info\obj\Debug\Info.exe
 D:\Gustavo\Projetos\Pessoais\Info\Info\obj\Debug\Info.pdb
 D:\Gustavo\Projetos\Pessoais\Info\Info\obj\Debug\Info.frmProdutosPorCategoria.resources
 D:\Gustavo\Projetos\Pessoais\Info\Info\obj\Debug\Info.frmPessoaFisica.resources
+D:\Gustavo\Projetos\Pessoais\Info\Info\obj\Debug\Info.frmVenda.resources
