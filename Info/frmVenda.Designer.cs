@@ -37,8 +37,10 @@
             System.Windows.Forms.Label lblValor;
             System.Windows.Forms.Label lblDesconto;
             System.Windows.Forms.Label valorPagoLabel;
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.Label codigoStatusLabel;
+            System.Windows.Forms.Label dataVencimentoLabel;
             this.cbxPessoa = new System.Windows.Forms.ComboBox();
             this.vendaBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.pessoaBindingSource = new System.Windows.Forms.BindingSource(this.components);
@@ -63,6 +65,11 @@
             this.cbxProduto = new System.Windows.Forms.ComboBox();
             this.produtoBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.txtCodigoVenda = new System.Windows.Forms.TextBox();
+            this.contaAReceberBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.cbxStatus = new System.Windows.Forms.ComboBox();
+            this.dtpVencimento = new System.Windows.Forms.DateTimePicker();
+            this.btnFinalizar = new System.Windows.Forms.Button();
+            this.statusDePagamentoBindingSource = new System.Windows.Forms.BindingSource(this.components);
             codigoPessoaLabel = new System.Windows.Forms.Label();
             codigoVendaLabel = new System.Windows.Forms.Label();
             codigoProdutoLabel = new System.Windows.Forms.Label();
@@ -71,12 +78,16 @@
             lblValor = new System.Windows.Forms.Label();
             lblDesconto = new System.Windows.Forms.Label();
             valorPagoLabel = new System.Windows.Forms.Label();
+            codigoStatusLabel = new System.Windows.Forms.Label();
+            dataVencimentoLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.vendaBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pessoaBindingSource)).BeginInit();
             this.gpbNovaVenda.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtvItens)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.itemVendaBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.produtoBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.contaAReceberBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.statusDePagamentoBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // codigoPessoaLabel
@@ -193,6 +204,11 @@
             // 
             // gpbNovaVenda
             // 
+            this.gpbNovaVenda.Controls.Add(this.btnFinalizar);
+            this.gpbNovaVenda.Controls.Add(dataVencimentoLabel);
+            this.gpbNovaVenda.Controls.Add(this.dtpVencimento);
+            this.gpbNovaVenda.Controls.Add(codigoStatusLabel);
+            this.gpbNovaVenda.Controls.Add(this.cbxStatus);
             this.gpbNovaVenda.Controls.Add(this.btnImprimir);
             this.gpbNovaVenda.Controls.Add(this.btnFV);
             this.gpbNovaVenda.Controls.Add(this.btnFPD);
@@ -214,7 +230,7 @@
             this.gpbNovaVenda.Controls.Add(this.txtCodigoVenda);
             this.gpbNovaVenda.Location = new System.Drawing.Point(0, 50);
             this.gpbNovaVenda.Name = "gpbNovaVenda";
-            this.gpbNovaVenda.Size = new System.Drawing.Size(815, 546);
+            this.gpbNovaVenda.Size = new System.Drawing.Size(840, 546);
             this.gpbNovaVenda.TabIndex = 7;
             this.gpbNovaVenda.TabStop = false;
             this.gpbNovaVenda.Text = "Nova Venda";
@@ -333,18 +349,18 @@
             // dataGridViewTextBoxColumn4
             // 
             this.dataGridViewTextBoxColumn4.DataPropertyName = "Valor";
-            dataGridViewCellStyle1.Format = "C2";
-            dataGridViewCellStyle1.NullValue = null;
-            this.dataGridViewTextBoxColumn4.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle5.Format = "C2";
+            dataGridViewCellStyle5.NullValue = null;
+            this.dataGridViewTextBoxColumn4.DefaultCellStyle = dataGridViewCellStyle5;
             this.dataGridViewTextBoxColumn4.HeaderText = "Valor";
             this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
             this.dataGridViewTextBoxColumn4.Width = 140;
             // 
             // Column1
             // 
-            dataGridViewCellStyle2.Format = "C2";
-            dataGridViewCellStyle2.NullValue = null;
-            this.Column1.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle6.Format = "C2";
+            dataGridViewCellStyle6.NullValue = null;
+            this.Column1.DefaultCellStyle = dataGridViewCellStyle6;
             this.Column1.HeaderText = "Valor Total";
             this.Column1.Name = "Column1";
             this.Column1.Width = 140;
@@ -401,11 +417,77 @@
             this.txtCodigoVenda.Size = new System.Drawing.Size(165, 26);
             this.txtCodigoVenda.TabIndex = 1;
             // 
+            // contaAReceberBindingSource
+            // 
+            this.contaAReceberBindingSource.DataSource = typeof(Info.DAL.ContaAReceber);
+            // 
+            // codigoStatusLabel
+            // 
+            codigoStatusLabel.AutoSize = true;
+            codigoStatusLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            codigoStatusLabel.Location = new System.Drawing.Point(425, 361);
+            codigoStatusLabel.Name = "codigoStatusLabel";
+            codigoStatusLabel.Size = new System.Drawing.Size(167, 20);
+            codigoStatusLabel.TabIndex = 19;
+            codigoStatusLabel.Text = "Forma de Pagamento:";
+            // 
+            // cbxStatus
+            // 
+            this.cbxStatus.DataBindings.Add(new System.Windows.Forms.Binding("SelectedValue", this.contaAReceberBindingSource, "CodigoStatus", true));
+            this.cbxStatus.DataSource = this.statusDePagamentoBindingSource;
+            this.cbxStatus.DisplayMember = "Status";
+            this.cbxStatus.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbxStatus.Enabled = false;
+            this.cbxStatus.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.cbxStatus.FormattingEnabled = true;
+            this.cbxStatus.Location = new System.Drawing.Point(598, 359);
+            this.cbxStatus.Name = "cbxStatus";
+            this.cbxStatus.Size = new System.Drawing.Size(197, 28);
+            this.cbxStatus.TabIndex = 20;
+            this.cbxStatus.ValueMember = "CodigoStatus";
+            this.cbxStatus.SelectedIndexChanged += new System.EventHandler(this.cbxStatus_SelectedIndexChanged);
+            // 
+            // dataVencimentoLabel
+            // 
+            dataVencimentoLabel.AutoSize = true;
+            dataVencimentoLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            dataVencimentoLabel.Location = new System.Drawing.Point(455, 401);
+            dataVencimentoLabel.Name = "dataVencimentoLabel";
+            dataVencimentoLabel.Size = new System.Drawing.Size(137, 20);
+            dataVencimentoLabel.TabIndex = 21;
+            dataVencimentoLabel.Text = "Data Vencimento:";
+            // 
+            // dtpVencimento
+            // 
+            this.dtpVencimento.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.contaAReceberBindingSource, "DataVencimento", true));
+            this.dtpVencimento.Enabled = false;
+            this.dtpVencimento.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.dtpVencimento.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtpVencimento.Location = new System.Drawing.Point(598, 402);
+            this.dtpVencimento.Name = "dtpVencimento";
+            this.dtpVencimento.Size = new System.Drawing.Size(197, 26);
+            this.dtpVencimento.TabIndex = 22;
+            // 
+            // btnFinalizar
+            // 
+            this.btnFinalizar.Enabled = false;
+            this.btnFinalizar.Location = new System.Drawing.Point(671, 470);
+            this.btnFinalizar.Name = "btnFinalizar";
+            this.btnFinalizar.Size = new System.Drawing.Size(124, 35);
+            this.btnFinalizar.TabIndex = 23;
+            this.btnFinalizar.Text = "Finalizar";
+            this.btnFinalizar.UseVisualStyleBackColor = true;
+            this.btnFinalizar.Click += new System.EventHandler(this.btnFinalizar_Click);
+            // 
+            // statusDePagamentoBindingSource
+            // 
+            this.statusDePagamentoBindingSource.DataSource = typeof(Info.DAL.StatusDePagamento);
+            // 
             // frmVenda
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(815, 546);
+            this.ClientSize = new System.Drawing.Size(840, 596);
             this.Controls.Add(this.gpbNovaVenda);
             this.Controls.Add(this.btnNovaVenda);
             this.Controls.Add(codigoPessoaLabel);
@@ -422,6 +504,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.dtvItens)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.itemVendaBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.produtoBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.contaAReceberBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.statusDePagamentoBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -453,5 +537,10 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
+        private System.Windows.Forms.DateTimePicker dtpVencimento;
+        private System.Windows.Forms.BindingSource contaAReceberBindingSource;
+        private System.Windows.Forms.ComboBox cbxStatus;
+        private System.Windows.Forms.Button btnFinalizar;
+        private System.Windows.Forms.BindingSource statusDePagamentoBindingSource;
     }
 }

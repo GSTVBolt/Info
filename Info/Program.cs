@@ -16,7 +16,14 @@ namespace Info
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new frmPrincipal());
+            
+            frmLogin FormLogin = new frmLogin();
+            FormLogin.ShowDialog();
+
+            if (FormLogin.logado == true)
+            {
+                Application.Run(new frmPrincipal());
+            }
         }
     }
 }

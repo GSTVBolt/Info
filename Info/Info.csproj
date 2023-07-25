@@ -53,6 +53,12 @@
     <Compile Include="frmCategoria.Designer.cs">
       <DependentUpon>frmCategoria.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmLogin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmLogin.Designer.cs">
+      <DependentUpon>frmLogin.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmPessoaFisica.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -89,6 +95,9 @@
     <EmbeddedResource Include="frmCategoria.resx">
       <DependentUpon>frmCategoria.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmLogin.resx">
+      <DependentUpon>frmLogin.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmPessoaFisica.resx">
       <DependentUpon>frmPessoaFisica.cs</DependentUpon>
     </EmbeddedResource>
@@ -114,11 +123,13 @@
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
     <None Include="Properties\DataSources\Info.DAL.Categoria.datasource" />
+    <None Include="Properties\DataSources\Info.DAL.ContaAReceber.datasource" />
     <None Include="Properties\DataSources\Info.DAL.ItemVenda.datasource" />
     <None Include="Properties\DataSources\Info.DAL.Pessoa.datasource" />
     <None Include="Properties\DataSources\Info.DAL.PessoaFisica.datasource" />
     <None Include="Properties\DataSources\Info.DAL.PessoaJuridica.datasource" />
     <None Include="Properties\DataSources\Info.DAL.Produto.datasource" />
+    <None Include="Properties\DataSources\Info.DAL.StatusDePagamento.datasource" />
     <None Include="Properties\DataSources\Info.DAL.Usuario.datasource" />
     <None Include="Properties\DataSources\Info.DAL.Venda.datasource" />
     <None Include="Properties\Settings.settings">

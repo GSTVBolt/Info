@@ -59,4 +59,16 @@ go
 --	id_Pessoa INT
 --)
 
+--CREATE TABLE tbl_StatusPagamento (
+--	id_Status INT PRIMARY KEY IDENTITY NOT NULL, 
+--	ds_Status VARCHAR(50) NOT NULL
+--)
 
+--CREATE TABLE tbl_ContasReceber (
+--	id_Conta INT PRIMARY KEY IDENTITY(1, 1) NOT NULL, 
+--	dt_Compra DATE NOT NULL, 
+--	dt_Vencimento DATE NOT NULL, 
+--	dt_Pagamento DATE, 
+--	id_Venda INT NOT NULL, 
+--	id_Status INT NOT NULL  
+--);

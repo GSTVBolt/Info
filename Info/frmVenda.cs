@@ -39,6 +39,14 @@ namespace Info
             }
         }
 
+        public ContaAReceber ContaCorrente
+        {
+            get
+            {
+                return (ContaAReceber)this.contaAReceberBindingSource.Current;
+            }
+        }
+
         private void frmVenda_Load(object sender, EventArgs e)
         {
             this.pessoaBindingSource.DataSource = DataContextFactory.DataContext.Pessoas;
@@ -46,6 +54,10 @@ namespace Info
             this.vendaBindingSource.DataSource = DataContextFactory.DataContext.Vendas;
 
             this.produtoBindingSource.DataSource = DataContextFactory.DataContext.Produtos;
+
+            this.contaAReceberBindingSource.DataSource = DataContextFactory.DataContext.ContaAReceber;
+
+            this.statusDePagamentoBindingSource.DataSource = DataContextFactory.DataContext.StatusDePagamentos;
 
             this.vendaBindingSource.AddNew();
         }
@@ -141,7 +153,47 @@ namespace Info
             DataContextFactory.DataContext.SubmitChanges();
             txtDesconto.Enabled = false;
             btnFV.Enabled = false;
+            // Contas a receber 
+            this.contaAReceberBindingSource.AddNew();
+            cbxStatus.Enabled = true;
+            this.ContaCorrente.CodigoVenda = this.VendaCorrente.CodigoVenda;
+            this.ContaCorrente.DataCompra = DateTime.Now;
+            this.ContaCorrente.DataVencimento = DateTime.Now;
+        }
+
+        private void cbxStatus_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cbxStatus.SelectedItem != null)
+            {
+                var status = (StatusDePagamento)cbxStatus.SelectedItem;
+                if (status.CodigoStatus == 1)
+                {
+                    this.ContaCorrente.CodigoStatus = (int)status.CodigoStatus;
+                    this.ContaCorrente.DataPagamento = DateTime.Now;
+                    btnFinalizar.Enabled = true;
+                    dtpVencimento.Enabled = false;
+                }
+                else if (status.CodigoStatus == 2)
+                {
+                    this.ContaCorrente.CodigoStatus = (int)status.CodigoStatus;
+                    this.ContaCorrente.DataVencimento = DateTime.Now;
+                    this.ContaCorrente.DataPagamento = null;
+                    dtpVencimento.Enabled = true;
+                    btnFinalizar.Enabled = true;
+                }
+            }
+        }
+
+        private void btnFinalizar_Click(object sender, EventArgs e)
+        {
+            this.contaAReceberBindingSource.EndEdit();
+            dtpVencimento.Enabled = false;
+            cbxStatus.Enabled = false;
+            DataContextFactory.DataContext.SubmitChanges();
             btnImprimir.Enabled = true;
+            btnFinalizar.Enabled = false;
+            MessageBox.Show("Venda finalizada com sucesso!\nImprima o cupom da venda.",
+                            "Venda finalizada");
         }
     }
 }

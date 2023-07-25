@@ -12,3 +12,7 @@ go
 --ALTER TABLE tbl_ItensVenda  ADD CONSTRAINT FKtbl_Itens_v307950 FOREIGN KEY (id_Produto) REFERENCES tbl_Produtos (id_Produto)
 
 --ALTER TABLE tbl_ItensVenda ADD CONSTRAINT FKtbl_Itens_v919744 FOREIGN KEY (id_Venda) REFERENCES tbl_Venda (id_Venda)
+
+--ALTER TABLE tbl_ContasReceber ADD CONSTRAINT FKcontas_rec225305 FOREIGN KEY (id_Venda) REFERENCES tbl_Venda (id_Venda);
+
+--ALTER TABLE tbl_ContasReceber ADD CONSTRAINT FKcontas_rec366784 FOREIGN KEY (id_status) REFERENCES tbl_StatusPagamento (id_status);
