@@ -1,4 +1,6 @@
-﻿namespace Info
+﻿using Info.DAL;
+
+namespace Info
 {
     partial class frmPessoaFisica
     {
@@ -131,7 +133,7 @@
             // 
             // pessoaBindingSource
             // 
-            this.pessoaBindingSource.DataSource = typeof(Info.DAL.Pessoa);
+            this.pessoaBindingSource.DataSource = typeof(Pessoa);
             // 
             // dtvPessoa
             // 

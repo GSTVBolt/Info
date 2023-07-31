@@ -1,4 +1,6 @@
-﻿namespace Info
+﻿using Info.DAL;
+
+namespace Info
 {
     partial class frmProduto
     {
@@ -128,7 +130,7 @@
             // 
             // produtoBindingSource
             // 
-            this.produtoBindingSource.DataSource = typeof(Info.DAL.Produto);
+            this.produtoBindingSource.DataSource = typeof(Produto);
             // 
             // dtvProdutos
             // 
@@ -199,7 +201,7 @@
             // 
             // categoriaBindingSource
             // 
-            this.categoriaBindingSource.DataSource = typeof(Info.DAL.Categoria);
+            this.categoriaBindingSource.DataSource = typeof(Categoria);
             // 
             // txtDesc
             // 

@@ -1,4 +1,6 @@
-﻿namespace Info
+﻿using Info.DAL;
+
+namespace Info
 {
     partial class frmVenda
     {
@@ -186,11 +188,11 @@
             // 
             // vendaBindingSource
             // 
-            this.vendaBindingSource.DataSource = typeof(Info.DAL.Venda);
+            this.vendaBindingSource.DataSource = typeof(Venda);
             // 
             // pessoaBindingSource
             // 
-            this.pessoaBindingSource.DataSource = typeof(Info.DAL.Pessoa);
+            this.pessoaBindingSource.DataSource = typeof(Pessoa);
             // 
             // btnNovaVenda
             // 
@@ -367,7 +369,7 @@
             // 
             // itemVendaBindingSource
             // 
-            this.itemVendaBindingSource.DataSource = typeof(Info.DAL.ItemVenda);
+            this.itemVendaBindingSource.DataSource = typeof(ItemVenda);
             // 
             // txtValor
             // 
@@ -405,7 +407,7 @@
             // 
             // produtoBindingSource
             // 
-            this.produtoBindingSource.DataSource = typeof(Info.DAL.Produto);
+            this.produtoBindingSource.DataSource = typeof(Produto);
             // 
             // txtCodigoVenda
             // 
@@ -419,7 +421,7 @@
             // 
             // contaAReceberBindingSource
             // 
-            this.contaAReceberBindingSource.DataSource = typeof(Info.DAL.ContaAReceber);
+            this.contaAReceberBindingSource.DataSource = typeof(ContaAReceber);
             // 
             // codigoStatusLabel
             // 
@@ -481,7 +483,7 @@
             // 
             // statusDePagamentoBindingSource
             // 
-            this.statusDePagamentoBindingSource.DataSource = typeof(Info.DAL.StatusDePagamento);
+            this.statusDePagamentoBindingSource.DataSource = typeof(StatusDePagamento);
             // 
             // frmVenda
             // 

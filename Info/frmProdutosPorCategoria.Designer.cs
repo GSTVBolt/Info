@@ -1,4 +1,6 @@
-﻿namespace Info
+﻿using Info.DAL;
+
+namespace Info
 {
     partial class frmProdutosPorCategoria
     {
@@ -46,7 +48,7 @@
             // 
             // produtoBindingSource
             // 
-            this.produtoBindingSource.DataSource = typeof(Info.DAL.Produto);
+            this.produtoBindingSource.DataSource = typeof(Produto);
             // 
             // produtoDataGridView
             // 
@@ -98,7 +100,7 @@
             // 
             // categoriaBindingSource
             // 
-            this.categoriaBindingSource.DataSource = typeof(Info.DAL.Categoria);
+            this.categoriaBindingSource.DataSource = typeof(Categoria);
             // 
             // dataGridViewTextBoxColumn1
             // 

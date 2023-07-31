@@ -102,11 +102,22 @@
     <Compile Include="frmProdutosPorCategoria.Designer.cs">
       <DependentUpon>frmProdutosPorCategoria.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmRelatorioProdutos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmRelatorioProdutos.Designer.cs">
+      <DependentUpon>frmRelatorioProdutos.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmVenda.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="frmVenda.Designer.cs">
       <DependentUpon>frmVenda.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Info.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Info.xsd</DependentUpon>
     </Compile>
     <Compile Include="MeusFormularios.cs" />
     <Compile Include="Program.cs" />
@@ -130,6 +141,9 @@
     <EmbeddedResource Include="frmProdutosPorCategoria.resx">
       <DependentUpon>frmProdutosPorCategoria.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmRelatorioProdutos.resx">
+      <DependentUpon>frmRelatorioProdutos.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmVenda.resx">
       <DependentUpon>frmVenda.cs</DependentUpon>
     </EmbeddedResource>
@@ -142,6 +156,18 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="RPT\RelatorioProdutos.rdlc" />
+    <None Include="Info.xsc">
+      <DependentUpon>Info.xsd</DependentUpon>
+    </None>
+    <None Include="Info.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>Info.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Info.xss">
+      <DependentUpon>Info.xsd</DependentUpon>
+    </None>
     <None Include="packages.config" />
     <None Include="Properties\DataSources\Info.DAL.Categoria.datasource" />
     <None Include="Properties\DataSources\Info.DAL.ContaAReceber.datasource" />
@@ -172,9 +198,7 @@
       <Name>Info.DAL</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="RPT\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Content Include="SqlServerTypes\readme.htm" />
     <Content Include="SqlServerTypes\x64\msvcr120.dll">

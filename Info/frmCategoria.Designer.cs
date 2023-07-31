@@ -1,4 +1,6 @@
-﻿namespace Info
+﻿using Info.DAL;
+
+namespace Info
 {
     partial class frmCategoria
     {
@@ -76,7 +78,7 @@
             // 
             // categoriaBindingSource
             // 
-            this.categoriaBindingSource.DataSource = typeof(Info.DAL.Categoria);
+            this.categoriaBindingSource.DataSource = typeof(Categoria);
             // 
             // btnNovo
             // 

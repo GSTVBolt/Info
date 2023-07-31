@@ -22,5 +22,16 @@ namespace Info.Properties {
                 return defaultInstance;
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=DESKTOP-A1PIAMK;Initial Catalog=db_info;User ID=sa;Password=C#&&JS;Co" +
+            "nnect Timeout=30;Encrypt=False;Trust Server Certificate=False")]
+        public string db_infoConnectionString {
+            get {
+                return ((string)(this["db_infoConnectionString"]));
+            }
+        }
     }
 }

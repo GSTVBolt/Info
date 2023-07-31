@@ -66,5 +66,23 @@ namespace Info
             MeusFormularios.FormVenda.Show();
             MeusFormularios.FormVenda.Focus();
         }
+
+        private void produtosToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            if (MeusFormularios.FormRelatorioProdutos == null)
+            {
+                MeusFormularios.FormRelatorioProdutos = new frmRelatorioProdutos();
+            }
+            MeusFormularios.FormRelatorioProdutos.Show();
+            MeusFormularios.FormRelatorioProdutos.Focus();
+            
+        }
+
+        private void sairToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            //frmLogin login = new frmLogin();
+            //login.Show();
+            //this.Hide();
+        }
     }
 }
