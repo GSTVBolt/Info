@@ -72,6 +72,12 @@
     <Compile Include="frmCategoria.Designer.cs">
       <DependentUpon>frmCategoria.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmListaCategorias.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmListaCategorias.Designer.cs">
+      <DependentUpon>frmListaCategorias.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmLogin.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -108,13 +114,19 @@
     <Compile Include="frmRelatorioProdutos.Designer.cs">
       <DependentUpon>frmRelatorioProdutos.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmRelatorioProdutosPorCategoria.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmRelatorioProdutosPorCategoria.Designer.cs">
+      <DependentUpon>frmRelatorioProdutosPorCategoria.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmVenda.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="frmVenda.Designer.cs">
       <DependentUpon>frmVenda.cs</DependentUpon>
     </Compile>
-    <Compile Include="Info.Designer.cs">
+    <Compile Include="DataSet\Info.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Info.xsd</DependentUpon>
@@ -125,6 +137,9 @@
     <Compile Include="SqlServerTypes\Loader.cs" />
     <EmbeddedResource Include="frmCategoria.resx">
       <DependentUpon>frmCategoria.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmListaCategorias.resx">
+      <DependentUpon>frmListaCategorias.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmLogin.resx">
       <DependentUpon>frmLogin.cs</DependentUpon>
@@ -144,6 +159,9 @@
     <EmbeddedResource Include="frmRelatorioProdutos.resx">
       <DependentUpon>frmRelatorioProdutos.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmRelatorioProdutosPorCategoria.resx">
+      <DependentUpon>frmRelatorioProdutosPorCategoria.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmVenda.resx">
       <DependentUpon>frmVenda.cs</DependentUpon>
     </EmbeddedResource>
@@ -157,18 +175,29 @@
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
     <EmbeddedResource Include="RPT\RelatorioProdutos.rdlc" />
-    <None Include="Info.xsc">
+    <EmbeddedResource Include="RPT\RelatorioProdutosPorCategoria.rdlc" />
+    <None Include="DataSet\Info.xsc">
       <DependentUpon>Info.xsd</DependentUpon>
     </None>
-    <None Include="Info.xsd">
+    <None Include="DataSet\Info.xsd">
       <SubType>Designer</SubType>
       <Generator>MSDataSetGenerator</Generator>
       <LastGenOutput>Info.Designer.cs</LastGenOutput>
     </None>
-    <None Include="Info.xss">
+    <None Include="DataSet\Info.xss">
       <DependentUpon>Info.xsd</DependentUpon>
     </None>
     <None Include="packages.config" />
+    <None Include="Properties\DataSources\frmCategoria.datasource" />
+    <None Include="Properties\DataSources\frmListaCategorias.datasource" />
+    <None Include="Properties\DataSources\frmLogin.datasource" />
+    <None Include="Properties\DataSources\frmPessoaFisica.datasource" />
+    <None Include="Properties\DataSources\frmPrincipal.datasource" />
+    <None Include="Properties\DataSources\frmProduto.datasource" />
+    <None Include="Properties\DataSources\frmProdutosPorCategoria.datasource" />
+    <None Include="Properties\DataSources\frmRelatorioProdutos.datasource" />
+    <None Include="Properties\DataSources\frmRelatorioProdutosPorCategoria.datasource" />
+    <None Include="Properties\DataSources\frmVenda.datasource" />
     <None Include="Properties\DataSources\Info.DAL.Categoria.datasource" />
     <None Include="Properties\DataSources\Info.DAL.ContaAReceber.datasource" />
     <None Include="Properties\DataSources\Info.DAL.ItemVenda.datasource" />
@@ -179,6 +208,19 @@
     <None Include="Properties\DataSources\Info.DAL.StatusDePagamento.datasource" />
     <None Include="Properties\DataSources\Info.DAL.Usuario.datasource" />
     <None Include="Properties\DataSources\Info.DAL.Venda.datasource" />
+    <None Include="Properties\DataSources\Info.DataSet.Info+vw_RelatorioProdutosDataTable.datasource" />
+    <None Include="Properties\DataSources\Info.DataSet.Info+vw_RelatorioProdutosRow.datasource" />
+    <None Include="Properties\DataSources\Info.DataSet.Info+vw_RelatorioProdutosRowChangeEvent.datasource" />
+    <None Include="Properties\DataSources\Info.DataSet.Info+vw_RelatorioProdutosRowChangeEventHandler.datasource" />
+    <None Include="Properties\DataSources\Info.DataSet.Info.datasource" />
+    <None Include="Properties\DataSources\Info.DataSet.InfoTableAdapters.TableAdapterManager+UpdateOrderOption.datasource" />
+    <None Include="Properties\DataSources\Info.DataSet.InfoTableAdapters.TableAdapterManager.datasource" />
+    <None Include="Properties\DataSources\Info.DataSet.InfoTableAdapters.vw_RelatorioProdutosTableAdapter.datasource" />
+    <None Include="Properties\DataSources\Info.Properties.Resources.datasource" />
+    <None Include="Properties\DataSources\Info.Properties.Settings.datasource" />
+    <None Include="Properties\DataSources\MeusFormularios.datasource" />
+    <None Include="Properties\DataSources\Program.datasource" />
+    <None Include="Properties\DataSources\SqlServerTypes.Utilities.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

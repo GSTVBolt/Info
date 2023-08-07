@@ -84,5 +84,15 @@ namespace Info
             //login.Show();
             //this.Hide();
         }
+
+        private void produtosPorCategoriaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (MeusFormularios.FormRelatorioProdutosPorCategoria == null)
+            {
+                MeusFormularios.FormRelatorioProdutosPorCategoria = new frmRelatorioProdutosPorCategoria();
+            }
+            MeusFormularios.FormRelatorioProdutosPorCategoria.Show();
+            MeusFormularios.FormRelatorioProdutosPorCategoria.Focus();
+        }
     }
 }

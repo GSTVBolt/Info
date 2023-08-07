@@ -10,7 +10,7 @@
 
 #pragma warning disable 1591
 
-namespace Info {
+namespace Info.DataSet {
     
     
     /// <summary>
@@ -745,7 +745,7 @@ namespace Info {
         }
     }
 }
-namespace Info.InfoTableAdapters {
+namespace Info.DataSet.InfoTableAdapters {
     
     
     /// <summary>
