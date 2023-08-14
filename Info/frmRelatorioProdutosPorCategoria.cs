@@ -15,6 +15,7 @@ namespace Info
 {
     public partial class frmRelatorioProdutosPorCategoria : Form
     {
+        public int CodigoCategoria { get; set; }
         public frmRelatorioProdutosPorCategoria()
         {
             InitializeComponent();
@@ -31,7 +32,9 @@ namespace Info
 
         private void frmRelatorioProdutosPorCategoria_Load(object sender, EventArgs e)
         {
-            string sql = "SELECT * FROM vw_RelatorioProdutos ORDER BY ds_Produto ASC";
+            ReportParameterCollection parms = new ReportParameterCollection();
+
+            string sql = "SELECT * FROM vw_RelatorioProdutos WHERE id_Categoria = (" + CodigoCategoria + ") ORDER BY ds_Produto ASC";
 
             cmd.CommandText = sql;
             cmd.Connection = cn;
@@ -41,11 +44,12 @@ namespace Info
             da.Fill(dt);
 
             reportViewer1.LocalReport.DataSources.Clear();
-            ReportDataSource source = new ReportDataSource("Info", dt);
+            ReportDataSource source = new ReportDataSource("Info2", dt);
             reportViewer1.LocalReport.ReportPath = "RelatorioProdutosPorCategoria.rdlc";
             reportViewer1.LocalReport.DataSources.Add(source);
 
             reportViewer1.RefreshReport();
+            this.reportViewer1.RefreshReport();
         }
     }
 }

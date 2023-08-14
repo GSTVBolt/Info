@@ -87,12 +87,19 @@ namespace Info
 
         private void produtosPorCategoriaToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (MeusFormularios.FormRelatorioProdutosPorCategoria == null)
+            //if (MeusFormularios.FormRelatorioProdutosPorCategoria == null)
+            //{
+            //    MeusFormularios.FormRelatorioProdutosPorCategoria = new frmRelatorioProdutosPorCategoria();
+            //}
+            //MeusFormularios.FormRelatorioProdutosPorCategoria.Show();
+            //MeusFormularios.FormRelatorioProdutosPorCategoria.Focus();
+
+            if (MeusFormularios.FormListaCategorias == null)
             {
-                MeusFormularios.FormRelatorioProdutosPorCategoria = new frmRelatorioProdutosPorCategoria();
+                MeusFormularios.FormListaCategorias = new frmListaCategorias();
             }
-            MeusFormularios.FormRelatorioProdutosPorCategoria.Show();
-            MeusFormularios.FormRelatorioProdutosPorCategoria.Focus();
+            MeusFormularios.FormListaCategorias.Show();
+            MeusFormularios.FormListaCategorias.Focus();
         }
     }
 }

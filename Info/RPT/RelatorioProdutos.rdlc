@@ -433,6 +433,7 @@
           <Border>
             <Style>None</Style>
           </Border>
+          <TextAlign>Center</TextAlign>
         </Style>
       </Tablix>
     </ReportItems>
@@ -466,8 +467,8 @@
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>Textbox2</rd:DefaultName>
-          <Top>2.11349cm</Top>
-          <Left>8.47795cm</Left>
+          <Top>2.07821cm</Top>
+          <Left>8.19665cm</Left>
           <Height>0.6cm</Height>
           <Width>8.03205cm</Width>
           <Style>

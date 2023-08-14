@@ -66,6 +66,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DataSet\Info2.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Info2.xsd</DependentUpon>
+    </Compile>
     <Compile Include="frmCategoria.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -186,6 +191,17 @@
     </None>
     <None Include="DataSet\Info.xss">
       <DependentUpon>Info.xsd</DependentUpon>
+    </None>
+    <None Include="DataSet\Info2.xsc">
+      <DependentUpon>Info2.xsd</DependentUpon>
+    </None>
+    <None Include="DataSet\Info2.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>Info2.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="DataSet\Info2.xss">
+      <DependentUpon>Info2.xsd</DependentUpon>
     </None>
     <None Include="packages.config" />
     <None Include="Properties\DataSources\frmCategoria.datasource" />
